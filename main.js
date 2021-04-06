@@ -1,4 +1,4 @@
-const CONSTANT = 2.204622;
+const CONSTANT = 2.2046;
 
 const kgToLb = kg => (kg * CONSTANT).toFixed(6);
 const lbToKg = lb => (lb / CONSTANT).toFixed(6);
