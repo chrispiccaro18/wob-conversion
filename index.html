@@ -29,22 +29,26 @@
     <p>Conversion rate is $1/lb = $2.2046/kg</p>
     
     <h1>Margin</h1>
-    <button id="margin-form-clear">Clear Form</button>
     <form id='margin-form'>
-      <div id="margin-from">
-        <h2>Cost</h2>
-        <input class="margin" id="cost" type="number" step="0.001">
-        <h2>Selling Price</h2>
-        <input class="margin" id="selling-price" type="number" step="0.001">
+      <div id="margin-from-buttons">
         <button>Calculate</button>
+        <button id="margin-form-clear">Clear Form</button>
       </div>
-      <div id="margin-from-results">
-        <h2>Profit Margin</h2>
-        <input class="margin" id="profit-margin" type="number" step="0.01">
-        <span>%</span>
-        <h2>Markup</h2>
-        <input class="markup" id="markup" type="number" step="0.01">
-        <span>%</span>
+      <div id="margin-form-inputs">
+        <div class="cost-and-sp">
+          <h2>Cost</h2>
+          <input class="margin" id="cost" type="number" step="0.001">
+          <h2>Selling Price</h2>
+          <input class="margin" id="selling-price" type="number" step="0.001">
+        </div>
+        <div>
+          <h2>Profit Margin</h2>
+          <input class="margin" id="profit-margin" type="number" step="0.01">
+          <span>%</span>
+          <h2>Markup</h2>
+          <input class="markup" id="markup" type="number" step="0.01">
+          <span>%</span>
+        </div>
       </div>
     </form>
 
