@@ -1,9 +1,16 @@
-const CONSTANT = 2.2046;
-
-const kgToLb = kg => (kg * CONSTANT).toFixed(6);
-const lbToKg = lb => (lb / CONSTANT).toFixed(6);
-const pricePerKgToLb = pricePerKg => (pricePerKg / CONSTANT).toFixed(6);
-const pricePerLbToKg = pricePerLb => (pricePerLb * CONSTANT).toFixed(6);
+import {
+  kgToLb,
+  lbToKg,
+  pricePerKgToLb,
+  pricePerLbToKg,
+  calcMargin,
+  calcProfitMargin,
+  calcMarkup,
+  calcSellingPriceWithCostAndPM,
+  calcSellingPriceWithCostAndMarkup,
+  calcCostWithSPAndPM,
+  calcCostWithSPAndMarkup,
+} from './calcFunctions.js';
 
 const functions = {
   kgToLb,
@@ -31,28 +38,49 @@ marginFormClearButton.addEventListener('click', () => {
 
 const costInput = document.getElementById('cost');
 const sellingPriceInput = document.getElementById('selling-price');
-const marginInput = document.getElementById('margin');
+const profitMarginInput = document.getElementById('profit-margin');
+const markupInput = document.getElementById('markup');
 
 marginForm.addEventListener('submit', event => {
   event.preventDefault();
-  
-  if(!marginInput.value) {
-    const grossProfit = sellingPriceInput.value - costInput.value;
-    const marginPercent = grossProfit / sellingPriceInput.value * 100;
-    const markupPercent = grossProfit / costInput.value * 100;
-    marginInput.value = marginPercent;
-  
-    const markupDisplay = document.getElementById('markup');
-    markupDisplay.textContent = markupPercent + '%';
+
+  let cost = parseInt(costInput.value);
+  let markup = parseInt(markupInput.value);
+  let profitMargin = parseInt(profitMarginInput.value);
+  let sellingPrice = parseInt(sellingPriceInput.value);
+
+  if(!profitMargin) {
+    profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
   }
 
-  if(!sellingPriceInput.value) {
-    const sellingPrice = costInput.value / (1 - marginInput.value / 100);
-    sellingPriceInput.value = sellingPrice;
+  if(!markup) {
+    markupInput.value = calcMarkup(cost, sellingPrice);
   }
 
-  if(!costInput.value) {
-    const cost = sellingPriceInput.value * (1 - marginInput.value / 100);
-    costInput.value = cost;
+  if(!cost) {
+    if(!markup) {
+      cost = calcCostWithSPAndPM(sellingPrice, profitMargin);
+      costInput.value = cost;
+      markupInput.value = calcMarkup(cost, sellingPrice);
+    }
+    if(!profitMargin) {
+      cost = calcCostWithSPAndMarkup(sellingPrice, markup);
+      costInput.value = cost;
+      profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
+    }
+  }
+
+  if(!sellingPrice) {
+    if(!markup) {
+      sellingPrice = calcSellingPriceWithCostAndPM(cost, profitMargin);
+      sellingPriceInput.value = sellingPrice;
+      markupInput.value = calcMarkup(cost, sellingPrice);
+    }
+
+    if(!profitMargin) {
+      sellingPrice = calcSellingPriceWithCostAndMarkup(cost, markup);
+      sellingPriceInput.value = sellingPrice;
+      profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
+    }
   }
 });
