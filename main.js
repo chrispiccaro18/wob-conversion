@@ -58,29 +58,26 @@ marginForm.addEventListener('submit', event => {
   }
 
   if(!cost) {
-    if(!markup) {
-      cost = calcCostWithSPAndPM(sellingPrice, profitMargin);
-      costInput.value = cost;
-      markupInput.value = calcMarkup(cost, sellingPrice);
-    }
     if(!profitMargin) {
       cost = calcCostWithSPAndMarkup(sellingPrice, markup);
       costInput.value = cost;
       profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
+    } else {
+      cost = calcCostWithSPAndPM(sellingPrice, profitMargin);
+      costInput.value = cost;
+      markupInput.value = calcMarkup(cost, sellingPrice);
     }
   }
 
   if(!sellingPrice) {
-    if(!markup) {
-      sellingPrice = calcSellingPriceWithCostAndPM(cost, profitMargin);
-      sellingPriceInput.value = sellingPrice;
-      markupInput.value = calcMarkup(cost, sellingPrice);
-    }
-
     if(!profitMargin) {
       sellingPrice = calcSellingPriceWithCostAndMarkup(cost, markup);
       sellingPriceInput.value = sellingPrice;
       profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
+    } else {
+      sellingPrice = calcSellingPriceWithCostAndPM(cost, profitMargin);
+      sellingPriceInput.value = sellingPrice;
+      markupInput.value = calcMarkup(cost, sellingPrice);
     }
   }
 });
