@@ -44,10 +44,10 @@ const markupInput = document.getElementById('markup');
 marginForm.addEventListener('submit', event => {
   event.preventDefault();
 
-  let cost = Number.parseFloat(costInput.value);
-  let markup = Number.parseFloat(markupInput.value);
-  let profitMargin = Number.parseFloat(profitMarginInput.value);
-  let sellingPrice = Number.parseFloat(sellingPriceInput.value);
+  let cost = costInput.valueAsNumber;
+  let markup = markupInput.valueAsNumber;
+  let profitMargin = profitMarginInput.valueAsNumber;
+  let sellingPrice = sellingPriceInput.valueAsNumber;
 
   if(!profitMargin) {
     profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
