@@ -32,14 +32,16 @@ conversionInputs.forEach(input => {
 const marginFormClearButton = document.getElementById('margin-form-clear');
 const marginForm = document.getElementById('margin-form');
 
-marginFormClearButton.addEventListener('click', () => {
+marginFormClearButton.addEventListener('click', event => {
   marginForm.reset();
+  event.preventDefault();
 });
 
 const costInput = document.getElementById('cost');
 const sellingPriceInput = document.getElementById('selling-price');
 const profitMarginInput = document.getElementById('profit-margin');
 const markupInput = document.getElementById('markup');
+const marginInput = document.getElementById('margin');
 
 marginForm.addEventListener('submit', event => {
   event.preventDefault();
@@ -48,6 +50,7 @@ marginForm.addEventListener('submit', event => {
   let markup = markupInput.valueAsNumber;
   let profitMargin = profitMarginInput.valueAsNumber;
   let sellingPrice = sellingPriceInput.valueAsNumber;
+  let margin = marginInput.valueAsNumber;
 
   if(!profitMargin) {
     profitMarginInput.value = calcProfitMargin(cost, sellingPrice);
@@ -79,5 +82,9 @@ marginForm.addEventListener('submit', event => {
       sellingPriceInput.value = sellingPrice;
       markupInput.value = calcMarkup(cost, sellingPrice);
     }
+  }
+
+  if(cost && sellingPrice) {
+    marginInput.value = calcMargin(cost, sellingPrice);
   }
 });

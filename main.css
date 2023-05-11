@@ -4,9 +4,23 @@
 }
 
 #margin-form-inputs {
+  width: min-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.margin-columns {
+  margin-right: 4rem;
+}
+
+h2 {
+  width: 12rem;
+}
+
+.with-percent {
   display: flex;
 }
 
-.cost-and-sp {
-  margin-right: 1.5rem;
+.with-percent span {
+  margin-left: .5rem
 }

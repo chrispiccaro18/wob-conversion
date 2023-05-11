@@ -35,33 +35,41 @@
         <button id="margin-form-clear">Clear Form</button>
       </div>
       <div id="margin-form-inputs">
-        <div class="cost-and-sp">
+        <div class="margin-columns">
           <h2>Cost</h2>
           <input class="margin" id="cost" type="number" step="0.0001">
           <h2>Selling Price</h2>
           <input class="margin" id="selling-price" type="number" step="0.0001">
         </div>
-        <div>
+        <div class="margin-columns">
           <h2>Profit Margin</h2>
-          <input class="margin" id="profit-margin" type="number" step="0.0001">
-          <span>%</span>
+          <div class="with-percent">
+            <input class="margin" id="profit-margin" type="number" step="0.0001">
+            <span>%</span>
+          </div>
           <h2>Markup</h2>
-          <input class="markup" id="markup" type="number" step="0.0001">
-          <span>%</span>
+          <div class="with-percent">
+            <input class="markup" id="markup" type="number" step="0.0001">
+            <span>%</span>
+          </div>
         </div>
-      </div>
-      <div>
-        <h2>Formulas</h2>
-        <p>Margin = Selling Price - Cost</p>
-        <p>Profit Margin % = Margin / Selling Price * 100</p>
-        <p>Markup % = Margin / Cost * 100</p>
-        <p>Selling Price = Cost / (1 - Profit Margin as Decimal)</p>
-        <p>Selling Price = Cost * Markup as Decimal + Cost</p>
-        <p>Cost = Selling Price * (1 - Profit Margin as Decimal)</p>
-        <p>Cost = Selling Price / Markup as Decimal</p>
+        <div>
+          <h2>Margin</h2>
+          <input class="margin" id="margin" type="number" step="0.0001">
+        </div>
       </div>
     </form>
 
+    <div>
+      <h2>Formulas</h2>
+      <p>Margin = Selling Price - Cost</p>
+      <p>Profit Margin % = Margin / Selling Price * 100</p>
+      <p>Markup % = Margin / Cost * 100</p>
+      <p>Selling Price = Cost / (1 - Profit Margin as Decimal)</p>
+      <p>Selling Price = Cost * Markup as Decimal + Cost</p>
+      <p>Cost = Selling Price * (1 - Profit Margin as Decimal)</p>
+      <p>Cost = Selling Price / Markup as Decimal</p>
+    </div>
   </main>
 </body>
   <script type="module" src="main.js"></script>

@@ -8,7 +8,7 @@ export const pricePerKgToLb = pricePerKg => (pricePerKg / CONSTANT).toFixed(NUMB
 export const pricePerLbToKg = pricePerLb => (pricePerLb * CONSTANT).toFixed(NUMBER_LENGTH);
 
 // margin = selling price - cost
-export const calcMargin = (cost, sellingPrice) => sellingPrice - cost;
+export const calcMargin = (cost, sellingPrice) => (sellingPrice - cost).toFixed(NUMBER_LENGTH);
 
 // profit margin = margin / selling price * 100
 export const calcProfitMargin = (cost, sellingPrice) => ((calcMargin(cost, sellingPrice) / sellingPrice) * 100).toFixed(NUMBER_LENGTH);
